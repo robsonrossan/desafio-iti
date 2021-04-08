@@ -1,4 +1,4 @@
-package com.br.desafio.iti.controller;
+package br.com.desafio.iti.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -6,16 +6,17 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import com.br.desafio.iti.dto.SenhaDTO;
-import com.br.desafio.iti.dto.SenhaStatusDTO;
-import com.br.desafio.iti.service.ValidacaoSenhaService;
+
+import br.com.desafio.iti.dto.SenhaDTO;
+import br.com.desafio.iti.dto.SenhaStatusDTO;
+import br.com.desafio.iti.service.ValidacaoSenhaService;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
 @RequestMapping("/iti/validacao")
-public class ValidacaoSenhaController {
+public class ValidacaoController {
 
     @Autowired
     ValidacaoSenhaService validacaoSenhaService;

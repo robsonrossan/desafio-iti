@@ -1,4 +1,4 @@
-package com.br.desafio.iti.dto;
+package br.com.desafio.iti.dto;
 
 import lombok.Builder;
 import lombok.Data;

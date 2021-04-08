@@ -1,4 +1,4 @@
-package com.br.desafio.iti.regras;
+package br.com.desafio.iti.regra;
 
 public interface RegrasSenhaInterface {
 

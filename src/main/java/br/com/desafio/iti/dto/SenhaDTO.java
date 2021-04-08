@@ -1,4 +1,4 @@
-package com.br.desafio.iti.dto;
+package br.com.desafio.iti.dto;
 
 import java.util.Objects;
 import com.fasterxml.jackson.annotation.JsonIgnore;

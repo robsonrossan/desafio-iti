@@ -1,12 +1,12 @@
-package com.br.desafio.iti.regras;
+package br.com.desafio.iti.regra;
 
-import com.br.desafio.iti.regras.impl.RegraCaracterEspecial;
-import com.br.desafio.iti.regras.impl.RegraCaracterRepetido;
-import com.br.desafio.iti.regras.impl.RegraLetraMaiuscula;
-import com.br.desafio.iti.regras.impl.RegraLetraMinuscula;
-import com.br.desafio.iti.regras.impl.RegraQtdeCaracteres;
-import com.br.desafio.iti.regras.impl.RegraUmDigito;
-import com.br.desafio.iti.regras.impl.RegraEspacoEmBranco;
+import br.com.desafio.iti.regras.impl.RegraCaracterEspecial;
+import br.com.desafio.iti.regras.impl.RegraCaracterRepetido;
+import br.com.desafio.iti.regras.impl.RegraEspacoEmBranco;
+import br.com.desafio.iti.regras.impl.RegraLetraMaiuscula;
+import br.com.desafio.iti.regras.impl.RegraLetraMinuscula;
+import br.com.desafio.iti.regras.impl.RegraQtdeCaracteres;
+import br.com.desafio.iti.regras.impl.RegraUmDigito;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

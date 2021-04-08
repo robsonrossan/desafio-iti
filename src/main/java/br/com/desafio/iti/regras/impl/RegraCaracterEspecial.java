@@ -1,9 +1,10 @@
-package com.br.desafio.iti.regras.impl;
+package br.com.desafio.iti.regras.impl;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.springframework.stereotype.Component;
-import com.br.desafio.iti.regras.RegrasSenhaInterface;
+
+import br.com.desafio.iti.regra.RegrasSenhaInterface;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
