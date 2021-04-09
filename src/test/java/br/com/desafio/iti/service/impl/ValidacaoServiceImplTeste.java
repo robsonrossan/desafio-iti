@@ -6,10 +6,12 @@ import br.com.desafio.iti.regra.Regra;
 import br.com.desafio.iti.regra.impl.RegraQtdeCaracteresImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 
 public class ValidacaoServiceImplTeste {
 
@@ -29,6 +31,7 @@ public class ValidacaoServiceImplTeste {
         senhaDTO.setSenha("Senh@12ASs%");
         SenhaStatusDTO senhaStatusDTO = validacaoService.validarSenha(senhaDTO);
         assertTrue(senhaStatusDTO.isSenhaValida());
+        assertNull(senhaStatusDTO.getMensagemErro());
     }
 
     @Test
@@ -37,5 +40,6 @@ public class ValidacaoServiceImplTeste {
         senhaDTO.setSenha("Senh@1");
         SenhaStatusDTO senhaStatusDTO = validacaoService.validarSenha(senhaDTO);
         assertFalse(senhaStatusDTO.isSenhaValida());
+        assertEquals("Senha precisa ter 9 caracteres no minimo", senhaStatusDTO.getMensagemErro());
     }
 }

@@ -1,10 +1,12 @@
 package br.com.desafio.iti.regra.impl;
 
+import br.com.desafio.iti.regra.exception.RegraUmDigitoException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RegraUmDigitoImplTeste {
 
@@ -16,12 +18,12 @@ public class RegraUmDigitoImplTeste {
             "Ab1Ac1"
     })
     public void verificarSenhaComAoMenosUmDigito(String valor) {
-        assertTrue(regraUmDigito.validarRegra(valor));
+        assertAll(() -> regraUmDigito.validarRegra(valor));
     }
 
     @Test
     public void verificarSenhaSemNehhumDigito() {
-        assertFalse(regraUmDigito.validarRegra("Abcd"));
+        assertThrows(RegraUmDigitoException.class, () -> regraUmDigito.validarRegra("Abcd"));
     }
 
 }

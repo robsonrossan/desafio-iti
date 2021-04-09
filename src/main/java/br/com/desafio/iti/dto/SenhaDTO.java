@@ -1,16 +1,12 @@
 package br.com.desafio.iti.dto;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.validation.constraints.NotEmpty;
 import lombok.Data;
-import java.util.Objects;
 
 @Data
 public class SenhaDTO {
 
+	@NotEmpty(message = "Campo Senha é Obrigatório")
     private String senha;
 
-    @JsonIgnore
-    public boolean validarParametroSenha() {
-        return !Objects.isNull(this.senha) && this.senha.length() > 0;
-    }
 }

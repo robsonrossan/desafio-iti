@@ -1,6 +1,8 @@
 package br.com.desafio.iti.regra;
 
+import br.com.desafio.iti.regra.exception.RegraException;
+
 public interface Regra {
 
-    boolean validarRegra(String senha);
+    void validarRegra(String senha) throws RegraException;
 }

@@ -1,9 +1,11 @@
 package br.com.desafio.iti.regra.impl;
 
+import br.com.desafio.iti.regra.exception.RegraQtdeCaracteresException;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RegraQtdeCaracterImplTeste {
 
@@ -15,7 +17,7 @@ public class RegraQtdeCaracterImplTeste {
             "aaabbbcccd"
     })
     public void verificarSenhaComAQtdeMinimaDeCaracters(String valor) {
-        assertTrue(regraQtdeCaracteres.validarRegra(valor));
+        assertAll(() -> regraQtdeCaracteres.validarRegra(valor));
     }
 
     @ParameterizedTest
@@ -24,6 +26,6 @@ public class RegraQtdeCaracterImplTeste {
             ""
     })
     public void verificarSenhaComAQtdeInsuficienteDeCaracteres(String valor) {
-        assertFalse(regraQtdeCaracteres.validarRegra(valor));
+        assertThrows(RegraQtdeCaracteresException.class, () -> regraQtdeCaracteres.validarRegra(valor));
     }
 }

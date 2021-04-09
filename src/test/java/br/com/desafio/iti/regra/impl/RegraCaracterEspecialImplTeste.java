@@ -1,10 +1,12 @@
 package br.com.desafio.iti.regra.impl;
 
+import br.com.desafio.iti.regra.exception.RegraCaracterEspecialException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class RegraCaracterEspecialImplTeste {
 
@@ -26,17 +28,17 @@ public class RegraCaracterEspecialImplTeste {
             "aa+aaa"
     })
     public void verificarSenhaComAoMenosUmCaracterEspecialPermitido(String valor) {
-        assertTrue(regraCaracterEspecial.validarRegra(valor));
+        assertAll(() -> regraCaracterEspecial.validarRegra(valor));
     }
 
     @Test
     public void verificarSenhaSemNenhumCaracterEspecial() {
-        assertFalse(regraCaracterEspecial.validarRegra("aaaaaa"));
+        assertThrows(RegraCaracterEspecialException.class, () -> regraCaracterEspecial.validarRegra("aaaaaa"));
     }
 
     @ParameterizedTest
     @ValueSource(strings = {"aa=aaa", "aa[aaa", "aa}aaa"})
     public void verificarSenhaComCaracterEspecialNaoPermitido(String valor) {
-        assertFalse(regraCaracterEspecial.validarRegra(valor));
+        assertThrows(RegraCaracterEspecialException.class, () -> regraCaracterEspecial.validarRegra(valor));
     }
 }

@@ -1,8 +1,11 @@
 package br.com.desafio.iti.regra.impl;
 
+import br.com.desafio.iti.regra.exception.RegraEspacoEmBrancoException;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class RegraEspacoEmBrancoImplTeste {
 
@@ -10,11 +13,11 @@ public class RegraEspacoEmBrancoImplTeste {
 
     @Test
     public void verificarSenhaSemEspacoEmBranco() {
-        assertTrue(regraEspacoEmBranco.validarRegra("abcd"));
+        assertAll(() -> regraEspacoEmBranco.validarRegra("abcd"));
     }
 
     @Test
     public void verificarSenhaComEspacoEmBranco() {
-        assertFalse(regraEspacoEmBranco.validarRegra("ab cd"));
+        assertThrows(RegraEspacoEmBrancoException.class, () -> regraEspacoEmBranco.validarRegra("ab cd"));
     }
 }

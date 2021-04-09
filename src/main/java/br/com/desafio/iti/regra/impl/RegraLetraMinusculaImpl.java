@@ -1,6 +1,8 @@
 package br.com.desafio.iti.regra.impl;
 
 import br.com.desafio.iti.regra.Regra;
+import br.com.desafio.iti.regra.exception.RegraException;
+import br.com.desafio.iti.regra.exception.RegraLetraMinusculaException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +11,13 @@ import org.springframework.stereotype.Component;
 public class RegraLetraMinusculaImpl implements Regra {
 
     @Override
-    public boolean validarRegra(String senha) {
+    public void validarRegra(String senha) throws RegraException {
 
         log.info("Verifica se a senha tem pelo menos uma letra minúscula");
 
-        return senha.chars().anyMatch(Character::isLowerCase);
+        if (!senha.chars().anyMatch(Character::isLowerCase)) {
+            throw new RegraLetraMinusculaException("Senha nao possui nenhuma letra minuscula");
+        }
     }
 
 
