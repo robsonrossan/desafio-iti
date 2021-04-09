@@ -2,37 +2,52 @@ package com.br.desafio.iti;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
+import br.com.desafio.iti.DesafioitiApplication;
 import br.com.desafio.iti.controller.ValidacaoController;
 import br.com.desafio.iti.dto.SenhaDTO;
 import br.com.desafio.iti.dto.SenhaStatusDTO;
 import br.com.desafio.iti.service.ValidacaoSenhaService;
 
-@SpringBootTest(classes={br.com.desafio.iti.controller.ValidacaoController.class})
-@AutoConfigureMockMvc
-@ComponentScan(basePackages = {"br.com.desafio.iti.controller.ValidacaoController"})
+@ContextConfiguration(classes={DesafioitiApplication.class, ValidacaoController.class})
+@SpringBootTest
 public class RegraLetraMinusculaTeste {
 
+	@Autowired
+	private ValidacaoSenhaService validacaoSenhaService;
 	
-	@MockBean
-	private static ValidacaoSenhaService validacaoSenhaService;
-	
-	@MockBean
-	private static ValidacaoController validacaoController;
+	@Autowired
+	private ValidacaoController validacaoController;
 	
 	@Test
-	public void verificarSenhaComAoMenosUmaLetraMinusculaValido() {
+	public void verificarSenhaComAoMenosUmaLetraMinusculaValidaControllerTesteValido() {
 		SenhaDTO senhaDTO = new SenhaDTO();
-		senhaDTO.setSenha("ABTP9!FOK");
-		SenhaStatusDTO resultado = validacaoSenhaService.validarRegrasSenha(senhaDTO);
-		assertEquals(resultado.isSenhaValida(), false);
+		senhaDTO.setSenha("AbTp9@fok");
+		ResponseEntity<SenhaStatusDTO> resultado = validacaoController.validarSenha(senhaDTO);
+		assertEquals(resultado.getBody().isSenhaValida(), true);
 	}
 	
 	@Test
-	public void verificarSenhaComAoMenosUmaLetraMinusculaInvalido() {
+	public void verificarSenhaComAoMenosUmaLetraMinusculaValidaControllerTesteInvalido() {
+		SenhaDTO senhaDTO = new SenhaDTO();
+		senhaDTO.setSenha("");
+		ResponseEntity<SenhaStatusDTO> resultado = validacaoController.validarSenha(senhaDTO);
+		assertEquals(resultado.getBody().isSenhaValida(), false);
+	}
+	
+	@Test
+	public void verificarSenhaComAoMenosUmaLetraMinusculaTesteValido() {
+		SenhaDTO senhaDTO = new SenhaDTO();
+		senhaDTO.setSenha("AbTp9!fok");
+		SenhaStatusDTO resultado = validacaoSenhaService.validarRegrasSenha(senhaDTO);
+		assertEquals(resultado.isSenhaValida(), true);
+	}
+	
+	@Test
+	public void verificarSenhaComAoMenosUmaLetraMinusculaTesteInvalido() {
 		SenhaDTO senhaDTO = new SenhaDTO();
 		senhaDTO.setSenha("ABTP9!FOK");
 		SenhaStatusDTO resultado = validacaoSenhaService.validarRegrasSenha(senhaDTO);

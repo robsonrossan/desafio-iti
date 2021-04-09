@@ -14,8 +14,8 @@ import br.com.desafio.iti.service.ValidacaoSenhaService;
 
 @ContextConfiguration(classes={DesafioitiApplication.class, ValidacaoController.class})
 @SpringBootTest
-public class RegraCaracterEspecialTeste {
-
+public class RegraSenhaOkTeste {
+	
 	@Autowired
 	private ValidacaoSenhaService validacaoSenhaService;
 	
@@ -23,7 +23,7 @@ public class RegraCaracterEspecialTeste {
 	private ValidacaoController validacaoController;
 	
 	@Test
-	public void verificarSenhaComAoMenosUmCaracterEspecialValidaControllerTesteValido() {
+	public void validandoSenhaCorretaTesteControllerValido() {
 		SenhaDTO senhaDTO = new SenhaDTO();
 		senhaDTO.setSenha("AbTp9@fok");
 		ResponseEntity<SenhaStatusDTO> resultado = validacaoController.validarSenha(senhaDTO);
@@ -31,7 +31,7 @@ public class RegraCaracterEspecialTeste {
 	}
 	
 	@Test
-	public void verificarSenhaComAoMenosUmCaracterEspecialValidaControllerTesteInvalido() {
+	public void validandoSenhaCorretaTesteControllerInvalido() {
 		SenhaDTO senhaDTO = new SenhaDTO();
 		senhaDTO.setSenha("");
 		ResponseEntity<SenhaStatusDTO> resultado = validacaoController.validarSenha(senhaDTO);
@@ -39,17 +39,17 @@ public class RegraCaracterEspecialTeste {
 	}
 	
 	@Test
-	public void verificarSenhaComAoMenosUmCaracterEspecialTesteValido() {
+	public void validandoSenhaTesteCorreto() {
 		SenhaDTO senhaDTO = new SenhaDTO();
-		senhaDTO.setSenha("AbTp9@fok");
+		senhaDTO.setSenha("AbTp9!fok");
 		SenhaStatusDTO resultado = validacaoSenhaService.validarRegrasSenha(senhaDTO);
 		assertEquals(resultado.isSenhaValida(), true);
 	}
 	
 	@Test
-	public void verificarSenhaComAoMenosUmCaracterEspecialTesteInvalido() {
+	public void validandoSenhaTesteIncorreto() {
 		SenhaDTO senhaDTO = new SenhaDTO();
-		senhaDTO.setSenha("AbTp9_fok");
+		senhaDTO.setSenha("AbTp9! fok");
 		SenhaStatusDTO resultado = validacaoSenhaService.validarRegrasSenha(senhaDTO);
 		assertEquals(resultado.isSenhaValida(), false);
 	}
