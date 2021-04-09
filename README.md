@@ -111,7 +111,7 @@ POST /iti/validacao/senha
 
 ```
 {
-    "senhaValida":false
+    "senhaValida":true
 }
 ```
 
