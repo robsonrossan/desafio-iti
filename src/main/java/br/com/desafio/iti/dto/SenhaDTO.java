@@ -2,7 +2,6 @@ package br.com.desafio.iti.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-
 import java.util.Objects;
 
 @Data

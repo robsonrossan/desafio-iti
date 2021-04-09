@@ -3,7 +3,6 @@ package br.com.desafio.iti.regra.impl;
 import br.com.desafio.iti.regra.Regra;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

@@ -13,17 +13,17 @@ public class RegraCaracterRepetidoImpl implements Regra {
 
         log.info("Verifica se a senha tem caracteres repetidos");
 
-        return contemCaracteresDuplicados(senha);
+        return verificaSecontemCaracteresDuplicados(senha);
     }
 
-    private boolean contemCaracteresDuplicados(String senha) {
+    private boolean verificaSecontemCaracteresDuplicados(String senha) {
         for (int i = 0; i < senha.length(); i++) {
             for (int j = i + 1; j < senha.length(); j++) {
-                if (senha.charAt(i) == senha.charAt(j)) {
-                    return true;
+            	if (senha.charAt(i) == senha.charAt(j)) {
+                    return false;
                 }
             }
         }
-        return false;
+        return true;
     }
 }
