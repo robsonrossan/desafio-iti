@@ -117,7 +117,8 @@ POST /iti/validacao/senha
 
 | Atributo | Descrição   |
 |---|---|
-| senhaValida  | Booleano indicando se a senha é válida ou não  |
+| senhaValida  | Booleano indica  true  |
+| senhaInvalida  | Booleano indica false mais uma descrição do erro |
 
 ###### Códigos de Retorno
 
