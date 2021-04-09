@@ -41,7 +41,7 @@ alteração no projeto.
 
 ### Requisitos mínimos
 
-- Java 8
+- Java 11
 - Maven 3.6
 
 ### Como executar o projeto
